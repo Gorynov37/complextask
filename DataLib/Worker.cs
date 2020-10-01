@@ -6,6 +6,7 @@ namespace DataLib
 	{
 		private int year;
 		public string Name { get; private set; }
+		public int Number { get; private set; }
 		public bool IsNeed { get; private set; }
 		public int Year
 		{
@@ -26,15 +27,17 @@ namespace DataLib
 			}
 		}
 
-		public Worker(Random rnd)
+		public Worker(int num, Random rnd)
 		{
-			Name = RandomName(rnd);
+			Number = num;
+			Name = $@"{RandomName(rnd)}";
 			Year = rnd.Next(1920, 2002);
 			IsNeed = Convert.ToBoolean(rnd.Next(0, 2));
 		}
 
-		public Worker(string name, int year, bool is_need)
+		public Worker(int num, string name, int year, bool is_need)
 		{
+			Number = num;
 			Name = name;
 			Year = year;
 			IsNeed = is_need;

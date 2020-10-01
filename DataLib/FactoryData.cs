@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 
 namespace DataLib
 {
@@ -9,13 +10,13 @@ namespace DataLib
     {
         public void AddPerson(int num, string name, int year, bool need)
         {
-            Worker Person = new Worker(name, year, need);
+            Worker Person = new Worker(num, name, year, need);
             this[num].Add(Person);
         }
 
         public void AddPerson(int num, Random rnd)
         {
-            Worker Person = new Worker(rnd);
+            Worker Person = new Worker(num, rnd);
             
             try
             {
@@ -23,8 +24,7 @@ namespace DataLib
             }
             catch (KeyNotFoundException)
             {
-                WorkersData workers = new WorkersData();
-                workers.Add(Person);
+                WorkersData workers = new WorkersData { Person };
                 this.Add(num, workers);
             }
         }
@@ -39,6 +39,22 @@ namespace DataLib
             }
         }
 
+        public void WriteToJson(string path)
+        {
+            path = @"C:\Users\goryn\Desktop\data.txt";
+            var options = new JsonSerializerOptions { WriteIndented = true };
+
+            foreach (KeyValuePair<int, WorkersData> d in this)
+            {
+                foreach (KeyValuePair<string, Worker> p in d.Value)
+                {
+                    string json = JsonSerializer.Serialize<Worker>(p.Value, options);
+                    System.IO.File.WriteAllText(path, json);
+                }
+
+            }
+
+        }
 
     }
 }

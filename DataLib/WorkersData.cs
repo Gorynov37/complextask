@@ -18,7 +18,7 @@ namespace DataLib
         }
         public Worker FindPriority()
         {
-            Worker Person = new Worker("", 2000, false);
+            Worker Person = new Worker(0, "", 2000, false);
             int min_year = 3000;
             
             foreach(KeyValuePair<string, Worker> p in this)
