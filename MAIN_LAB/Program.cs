@@ -41,6 +41,8 @@ namespace Main_Lab
                 sw.WriteLine($"    Приоритетный рабочий: {d.Value.FindPriority().Name} ({d.Value.FindPriority().Year})\n");
             }
             sw.Close();
+
+            Console.ReadKey();
         }
     }
 }
