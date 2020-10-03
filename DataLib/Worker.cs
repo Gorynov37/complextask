@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace DataLib
 {
@@ -27,11 +28,11 @@ namespace DataLib
 			}
 		}
 
-		public Worker(int num, Random rnd)
+		public Worker(int num, Random rnd, in string[] surnames)
 		{
 			Number = num;
-			Name = $@"{RandomName(rnd)}";
-			Year = rnd.Next(1920, 2002);
+			Name = surnames[rnd.Next(0, 318472)];
+			Year = rnd.Next(1940, 2003);
 			IsNeed = Convert.ToBoolean(rnd.Next(0, 2));
 		}
 
@@ -42,21 +43,6 @@ namespace DataLib
 			Year = year;
 			IsNeed = is_need;
 		}
-
-		private string RandomName(Random rnd)
-        {
-			char[] UpLetters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ".ToCharArray();
-			char[] Letters = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".ToCharArray();
-			string name = "";
-
-			for (int i = 1; i < 10; i++)
-            {
-				if (i == 1) { name += UpLetters[rnd.Next(0, 29)]; }
-				else { name += Letters[rnd.Next(0, 32)]; }
-            }
-
-			return name;
-        }
 
 		public void Copy(Worker p)
         {

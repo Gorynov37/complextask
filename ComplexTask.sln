@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLib", "DataLib\DataLib.csproj", "{7A125A81-70D3-4B50-A9F1-4163FDBFFB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAIN_LAB", "..\Class_Data\Class_Data\MAIN_LAB.csproj", "{B4534725-B689-4EFA-A16C-B9F27FBBE25D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAIN_LAB", "MAIN_LAB\MAIN_LAB.csproj", "{B4534725-B689-4EFA-A16C-B9F27FBBE25D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DataLib
 {
-    public class WorkersData : Dictionary<string,Worker>
+    public class WorkersData : SortedDictionary<string,Worker>
     {
         public int IsNeedAmount()
         {
@@ -19,13 +19,14 @@ namespace DataLib
         public Worker FindPriority()
         {
             Worker Person = new Worker(0, "", 2000, false);
-            int min_year = 3000;
+            int min_year = 2004;
             
             foreach(KeyValuePair<string, Worker> p in this)
             {
                 if ((p.Value.IsNeed) && (p.Value.Year < min_year))
                 {
                     Person.Copy(p.Value);
+                    min_year = p.Value.Year;
                 }
             }
 
