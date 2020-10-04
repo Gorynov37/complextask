@@ -82,6 +82,7 @@ namespace DataLib
             sw.Close();
         }
 
+
         public void ReadTxt(Stream path)
         {
             StreamReader sw = new StreamReader(path);
