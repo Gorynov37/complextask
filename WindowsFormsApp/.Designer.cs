@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompLabForm1));
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Generate_Button = new System.Windows.Forms.Button();
-            this.SaveAs_Button = new System.Windows.Forms.Button();
+            this.OpenFile_Button = new System.Windows.Forms.Button();
             this.GeneratedListBox1 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.DataProcessingButton = new System.Windows.Forms.Button();
             this.SurnameText = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.Need = new System.Windows.Forms.ComboBox();
             this.numericYear = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,18 +46,16 @@
             this.label7 = new System.Windows.Forms.Label();
             this.NumText = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.numeric_n = new System.Windows.Forms.NumericUpDown();
             this.numeric_m = new System.Windows.Forms.NumericUpDown();
+            this.numeric_n = new System.Windows.Forms.NumericUpDown();
+            this.SaveAsButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numericYear)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_n)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_m)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_n)).BeginInit();
             this.SuspendLayout();
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // label1
             // 
@@ -86,16 +83,17 @@
             this.Generate_Button.TabIndex = 4;
             this.Generate_Button.Text = "Сгенерировать";
             this.Generate_Button.UseVisualStyleBackColor = true;
-            this.Generate_Button.Click += new System.EventHandler(this.button1_Click_1);
+            this.Generate_Button.Click += new System.EventHandler(this.RandomInitButton_Click);
             // 
-            // SaveAs_Button
+            // OpenFile_Button
             // 
-            this.SaveAs_Button.Location = new System.Drawing.Point(465, 38);
-            this.SaveAs_Button.Name = "SaveAs_Button";
-            this.SaveAs_Button.Size = new System.Drawing.Size(130, 50);
-            this.SaveAs_Button.TabIndex = 5;
-            this.SaveAs_Button.Text = "Загрузить из файла";
-            this.SaveAs_Button.UseVisualStyleBackColor = true;
+            this.OpenFile_Button.Location = new System.Drawing.Point(465, 38);
+            this.OpenFile_Button.Name = "OpenFile_Button";
+            this.OpenFile_Button.Size = new System.Drawing.Size(130, 50);
+            this.OpenFile_Button.TabIndex = 5;
+            this.OpenFile_Button.Text = "Загрузить из файла";
+            this.OpenFile_Button.UseVisualStyleBackColor = true;
+            this.OpenFile_Button.Click += new System.EventHandler(this.OpenFile_Button_Click);
             // 
             // GeneratedListBox1
             // 
@@ -105,7 +103,6 @@
             this.GeneratedListBox1.Name = "GeneratedListBox1";
             this.GeneratedListBox1.Size = new System.Drawing.Size(580, 212);
             this.GeneratedListBox1.TabIndex = 6;
-            this.GeneratedListBox1.SelectedIndexChanged += new System.EventHandler(this.GeneratedListBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -135,15 +132,15 @@
             this.SurnameText.Size = new System.Drawing.Size(258, 22);
             this.SurnameText.TabIndex = 10;
             // 
-            // button1
+            // AddButton
             // 
-            this.button1.Location = new System.Drawing.Point(15, 196);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(580, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.AddButton.Location = new System.Drawing.Point(15, 196);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(580, 23);
+            this.AddButton.TabIndex = 14;
+            this.AddButton.Text = "Добавить";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // Need
             // 
@@ -195,7 +192,6 @@
             this.label5.Size = new System.Drawing.Size(37, 17);
             this.label5.TabIndex = 19;
             this.label5.Text = "Цех:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -235,38 +231,6 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Случайная генерация";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(465, 479);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 76);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "Сохранить как...";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // numeric_n
-            // 
-            this.numeric_n.Location = new System.Drawing.Point(159, 26);
-            this.numeric_n.Maximum = new decimal(new int[] {
-            320000,
-            0,
-            0,
-            0});
-            this.numeric_n.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numeric_n.Name = "numeric_n";
-            this.numeric_n.Size = new System.Drawing.Size(102, 22);
-            this.numeric_n.TabIndex = 25;
-            this.numeric_n.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             // 
             // numeric_m
             // 
@@ -290,13 +254,56 @@
             0,
             0});
             // 
+            // numeric_n
+            // 
+            this.numeric_n.Location = new System.Drawing.Point(159, 26);
+            this.numeric_n.Maximum = new decimal(new int[] {
+            320000,
+            0,
+            0,
+            0});
+            this.numeric_n.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numeric_n.Name = "numeric_n";
+            this.numeric_n.Size = new System.Drawing.Size(102, 22);
+            this.numeric_n.TabIndex = 25;
+            this.numeric_n.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // SaveAsButton
+            // 
+            this.SaveAsButton.Location = new System.Drawing.Point(465, 479);
+            this.SaveAsButton.Name = "SaveAsButton";
+            this.SaveAsButton.Size = new System.Drawing.Size(130, 76);
+            this.SaveAsButton.TabIndex = 24;
+            this.SaveAsButton.Text = "Сохранить как...";
+            this.SaveAsButton.UseVisualStyleBackColor = true;
+            this.SaveAsButton.Click += new System.EventHandler(this.SaveAsButton_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "(*.txt)|*.txt|Все файлы (*.*)|*.*\"";
+            this.openFileDialog1.InitialDirectory = "\"c:\\\\\"";
+            this.openFileDialog1.RestoreDirectory = true;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileName = "List";
+            this.saveFileDialog1.Filter = "(*.txt)|*.txt|Все файлы (*.*)|*.*\"";
+            // 
             // CompLabForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 567);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.SaveAs_Button);
+            this.Controls.Add(this.SaveAsButton);
+            this.Controls.Add(this.OpenFile_Button);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.NumText);
             this.Controls.Add(this.label7);
@@ -305,7 +312,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numericYear);
             this.Controls.Add(this.Need);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.SurnameText);
             this.Controls.Add(this.DataProcessingButton);
             this.Controls.Add(this.label3);
@@ -316,24 +323,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericYear)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_n)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_m)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_n)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Generate_Button;
-        private System.Windows.Forms.Button SaveAs_Button;
+        private System.Windows.Forms.Button OpenFile_Button;
         private System.Windows.Forms.ListBox GeneratedListBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button DataProcessingButton;
         private System.Windows.Forms.TextBox SurnameText;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.ComboBox Need;
         private System.Windows.Forms.NumericUpDown numericYear;
         private System.Windows.Forms.Label label4;
@@ -342,9 +348,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox NumText;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button SaveAsButton;
         private System.Windows.Forms.NumericUpDown numeric_m;
         private System.Windows.Forms.NumericUpDown numeric_n;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

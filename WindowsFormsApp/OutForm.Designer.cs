@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OutForm));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SaveAs_Button = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // listBox1
@@ -41,7 +42,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(851, 292);
             this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // SaveAs_Button
             // 
@@ -53,6 +53,11 @@
             this.SaveAs_Button.UseVisualStyleBackColor = true;
             this.SaveAs_Button.Click += new System.EventHandler(this.SaveAs_Button_Click);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileName = "Result";
+            this.saveFileDialog1.Filter = "(*.txt)|*.txt|Все файлы (*.*)|*.*\"";
+            // 
             // OutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -63,7 +68,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OutForm";
             this.Text = "OutForm";
-            this.Load += new System.EventHandler(this.OutForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -72,5 +76,6 @@
 
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button SaveAs_Button;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

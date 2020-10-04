@@ -29,19 +29,18 @@ namespace WindowsFormsApp
             }
         }
 
-        private void OutForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void SaveAs_Button_Click(object sender, EventArgs e)
         {
-
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filename = saveFileDialog1.FileName;
+                data.WriteResultTxt(filename);
+                MessageBox.Show(
+                    "Файл сохранен",
+                    "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
         }
     }
 }

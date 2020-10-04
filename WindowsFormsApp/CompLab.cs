@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,23 +14,35 @@ namespace WindowsFormsApp
 {
     public partial class CompLabForm1 : Form
     {
-        FactoryData data;
+        FactoryData data = new FactoryData();
+        bool inited = false;
         public CompLabForm1()
         {
             InitializeComponent();
-            data = new FactoryData();
         }
-        private void button1_Click_1(object sender, EventArgs e)
+        private void RandomInitButton_Click(object sender, EventArgs e)
         {
-            data.RandomInit(Convert.ToInt32(numeric_n.Value) , Convert.ToInt32(numeric_m.Value));
-            data.WriteTxt();
-
-            foreach (KeyValuePair<int, WorkersData> d in data)
+            if (inited)
             {
-                foreach (KeyValuePair<string, Worker> p in d.Value)
+                MessageBox.Show(
+                    "Вы уже ввели данные другим способом.",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+            }
+            else
+            {
+                data.RandomInit(Convert.ToInt32(numeric_n.Value), Convert.ToInt32(numeric_m.Value));
+
+                foreach (KeyValuePair<int, WorkersData> d in data)
                 {
-                    GeneratedListBox1.Items.Add($"{p.Value.Name}         {p.Value.Number}         {p.Value.Year}         {p.Value.IsNeed} ");
+                    foreach (KeyValuePair<string, Worker> p in d.Value)
+                    {
+                        GeneratedListBox1.Items.Add($"{p.Value.Name}         {p.Value.Number}         {p.Value.Year}         {p.Value.IsNeed} ");
+                    }
                 }
+                inited = true;
             }
 
         }
@@ -41,11 +54,7 @@ namespace WindowsFormsApp
             outForm.Show();
         }
 
-        private void domain_n_SelectedItemChanged(object sender, EventArgs e) { }
-        private void GeneratedListBox1_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void label5_Click(object sender, EventArgs e) { }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -64,9 +73,49 @@ namespace WindowsFormsApp
             
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void OpenFile_Button_Click(object sender, EventArgs e)
         {
+            if (inited)
+            {
+                MessageBox.Show(
+                    "Вы уже ввели данные другим способом.",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+            }
+            else
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    Stream fileStream = openFileDialog1.OpenFile();
+                    data.ReadTxt(fileStream);
 
+                    foreach (KeyValuePair<int, WorkersData> d in data)
+                    {
+                        foreach (KeyValuePair<string, Worker> p in d.Value)
+                        {
+                            GeneratedListBox1.Items.Add($"{p.Value.Name}         {p.Value.Number}         {p.Value.Year}         {p.Value.IsNeed} ");
+                        }
+                    }
+                    fileStream.Close();
+                    inited = true;
+                }
+            }
+        }
+
+        private void SaveAsButton_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filename = saveFileDialog1.FileName;
+                data.WriteTxt(filename);
+                MessageBox.Show(
+                    "Файл сохранен",
+                    "",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
         }
     }
 }

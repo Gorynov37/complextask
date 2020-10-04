@@ -54,7 +54,7 @@ namespace DataLib
             }
         }
 
-        public void WriteTxt(string path = @"C:\Users\goryn\Desktop\text.txt")
+        public void WriteTxt(string path)
         {
             StreamWriter sw = new StreamWriter(path);
 
@@ -68,20 +68,39 @@ namespace DataLib
             sw.Close();
         }
 
-        public void ReadTxt(int n, string path = @"C:\Users\goryn\Desktop\text.txt")
+        public void WriteResultTxt(string path)
+        {
+            StreamWriter sw = new StreamWriter(path);
+
+            foreach (KeyValuePair<int, WorkersData> d in this)
+            {
+                sw.WriteLine($"\nИнформация по цеху №{d.Key}:");
+                sw.WriteLine($"    Нужно Квартир: {d.Value.IsNeedAmount()}");
+                sw.WriteLine($"    Приоритетный рабочий: {d.Value.FindPriority().Name} ({d.Value.FindPriority().Year})\n");
+            }
+            sw.Close();
+        }
+
+        public void ReadTxt(Stream path)
         {
             StreamReader sw = new StreamReader(path);
 
-            for(int i = 0; i < n; i++)
+            string name = "";
+            string num_ = "";
+            string year_ = "";
+            string need_ = "";
+            while (((name = sw.ReadLine()) != null)&&
+                   ((num_ = sw.ReadLine()) != null)&&
+                   ((year_ = sw.ReadLine()) != null)&&
+                   ((need_ = sw.ReadLine()) != null))
             {
-                string name = sw.ReadLine().Trim();
-                int num = Convert.ToInt32(sw.ReadLine().Trim());
-                int year = Convert.ToInt32(sw.ReadLine().Trim());
-                bool need = Convert.ToBoolean(sw.ReadLine().Trim());
+                name = name.Trim();
+                int num = Convert.ToInt32(num_.Trim());
+                int year = Convert.ToInt32(year_.Trim());
+                bool need = Convert.ToBoolean(need_.Trim());
 
-                AddPerson(num, name, year, need);
+                this.AddPerson(num, name, year, need);
             }
-            sw.Close();
         }
     }
 }
