@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fedora1.ico" />
+    <Content Include="SurnameBase.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
