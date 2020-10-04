@@ -19,7 +19,7 @@ namespace Main_Lab
 
             FactoryData data = new FactoryData();
             data.ReadTxt(n);
-
+            /*
             foreach(KeyValuePair<int, WorkersData> d in data)
             {
                 foreach(KeyValuePair<string, Worker> p in d.Value)
@@ -31,7 +31,7 @@ namespace Main_Lab
                 Console.WriteLine($"    Нужно Квартир: {d.Value.IsNeedAmount()}");
                 Console.WriteLine($"    Приоритетный рабочий: {d.Value.FindPriority().Name} ({d.Value.FindPriority().Year})\n");
             }
-
+            */
             StreamWriter sw = new StreamWriter(@"C:\Users\goryn\Desktop\ResultText.txt");
 
             foreach (KeyValuePair<int, WorkersData> d in data)
@@ -41,8 +41,6 @@ namespace Main_Lab
                 sw.WriteLine($"    Приоритетный рабочий: {d.Value.FindPriority().Name} ({d.Value.FindPriority().Year})\n");
             }
             sw.Close();
-
-            Console.ReadKey();
         }
     }
 }

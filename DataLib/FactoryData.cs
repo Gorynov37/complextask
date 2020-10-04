@@ -40,7 +40,7 @@ namespace DataLib
         public void RandomInit(int n, int m)
         {
             Random rnd = new Random();
-            StreamReader sw = new StreamReader(@"..\SurnameBase.txt");
+            StreamReader sw = new StreamReader(@"C:\Users\goryn\source\repos\ComplexTask\SurnameBase.txt");
             string[] surnames = new string[318472];
             for (int i = 0; i < 318472; i++)
             {
