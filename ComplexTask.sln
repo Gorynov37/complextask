@@ -5,10 +5,7 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLib", "DataLib\DataLib.csproj", "{7A125A81-70D3-4B50-A9F1-4163FDBFFB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsFormsApp\WindowsFormsApp.csproj", "{45CDF276-5472-4EF1-B980-A71625C801F6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{7A125A81-70D3-4B50-A9F1-4163FDBFFB1D} = {7A125A81-70D3-4B50-A9F1-4163FDBFFB1D}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoplexTaskGUI", "CoplexTaskGUI\CoplexTaskGUI.csproj", "{45CDF276-5472-4EF1-B980-A71625C801F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,6 +4,9 @@ using System.IO;
 
 namespace DataLib
 {
+    /*
+     * 
+     */
     public class FactoryData : SortedDictionary<int,WorkersData>
     {
         public void AddPerson(int num, string name, int year, bool need)

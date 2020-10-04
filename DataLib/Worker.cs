@@ -2,6 +2,9 @@
 
 namespace DataLib
 {
+	/*
+	 * 
+	 */
 	public class Worker
 	{
 		private int year;

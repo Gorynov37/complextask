@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace DataLib
 {
+    /*
+     * 
+     */
     public class WorkersData : SortedDictionary<string,Worker>
     {
         public int IsNeedAmount()
