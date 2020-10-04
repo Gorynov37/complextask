@@ -2,15 +2,23 @@
 
 namespace DataLib
 {
-	/*
+	/*		Класс Worker
 	 * 
+	 * Содержит:
+	 *	- данные об одном рабочем
+	 *	- Способы создания экземпляра класса
+	 *	- Методы работы с экземплярами класса
+	 * 
+	 * Наследование:
+	 *	Object -> Worker
 	 */
 	public class Worker
 	{
-		private int year;
-		public string Name { get; private set; }
-		public int Number { get; private set; }
-		public bool IsNeed { get; private set; }
+		public string Name { get; private set; }	//Имя(Фамилия) работника
+		public int Number { get; private set; }		//Номер цеха работника
+		public bool IsNeed { get; private set; }	//Нуждаемость в жилплощади 
+
+		private int year;                           //Год рождения рабочего
 		public int Year
 		{
 			get
@@ -28,8 +36,9 @@ namespace DataLib
 					throw new Exception("Ошибка: Введён неверный год рождения");
 				}
 			}
-		}
+		}							//Год рождения как свойство (Работает с полем year)
 
+		//	Конструктор для генерации случайного человека с заданным номером цеха num
 		public Worker(int num, Random rnd, in string[] surnames)
 		{
 			Number = num;
@@ -37,7 +46,7 @@ namespace DataLib
 			Year = rnd.Next(1940, 2003);
 			IsNeed = Convert.ToBoolean(rnd.Next(0, 2));
 		}
-
+		//	Стандартный конструктор принимающий все 4 параметра
 		public Worker(int num, string name, int year, bool is_need)
 		{
 			Number = num;
@@ -45,12 +54,13 @@ namespace DataLib
 			Year = year;
 			IsNeed = is_need;
 		}
-
-		public void Copy(Worker p)
+		//	Копирует все параметры из worker в this
+		public void Copy(Worker worker)
         {
-			this.Name = p.Name;
-			this.Year = p.Year;
-			this.IsNeed = p.IsNeed;
+			Number = worker.Number;
+			Name = worker.Name;
+			Year = worker.Year;
+			IsNeed = worker.IsNeed;
         }
 	}
 }

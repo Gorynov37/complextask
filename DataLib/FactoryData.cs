@@ -4,25 +4,37 @@ using System.IO;
 
 namespace DataLib
 {
-    /*
+    /*      Класс FactoryData
      * 
+     * Представляет из себя словарь - двоичное дерево поиска
+     *  с номером цеха в качестве ключа
+     *  и с объектом класса WorkersData(Рабочие этого цеха) в качестве элемента.
+     *  
+     * Содержит методы добавления информации о рабочих, чтения/записи файлов с данными.
+     * 
+     * Наследование:
+     *  Object -> SortedDictionary<int,WorkersData> -> FactoryData
      */
     public class FactoryData : SortedDictionary<int,WorkersData>
     {
+        //  Добавление рабочего по всем 4 параметрам.
+        //Добавляет элемент класса Worker в словарь(WorkersData) с рабочими данного цеха.
         public void AddPerson(int num, string name, int year, bool need)
         {
             Worker Person = new Worker(num, name, year, need);
-            try
+            if (this.ContainsKey(num)) 
             {
                 this[num].Add(Person);
             }
-            catch (KeyNotFoundException)
+            else
             {
                 WorkersData workers = new WorkersData { Person };
                 Add(num, workers);
             }
         }
 
+        //  Добавление случайно сгенерированного рабочего
+        //с данным номером цеха и с фамилией из данного массива строк.
         public void AddPerson(int num, Random rnd, in string[] surnames)
         {
             Worker Person = new Worker(num, rnd, in surnames);
@@ -38,6 +50,8 @@ namespace DataLib
             }
         }
 
+        //  Заполняет словарь случайными данными о рабочих
+        //с помощью метода AppPerson с фамилиями из файла SurnameBase.txt
         public void RandomInit(int n, int m)
         {
             Random rnd = new Random();
@@ -55,6 +69,7 @@ namespace DataLib
             }
         }
 
+        //  Записывает все данные в файл txt
         public void WriteTxt(string path)
         {
             StreamWriter sw = new StreamWriter(path);
@@ -69,6 +84,8 @@ namespace DataLib
             sw.Close();
         }
 
+        //  Записывает в файл txt результаты обработки данных 
+        //полученные применением методов IsNeedAmount() и FindPriority() к каждому элементу
         public void WriteResultTxt(string path)
         {
             StreamWriter sw = new StreamWriter(path);
@@ -82,7 +99,8 @@ namespace DataLib
             sw.Close();
         }
 
-
+        //  Считывает данные из файла txt
+        //и добавляет в словарь с помощью метода AppPerson
         public void ReadTxt(Stream path)
         {
             StreamReader sw = new StreamReader(path);

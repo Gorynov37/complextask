@@ -3,11 +3,20 @@ using System.Collections.Generic;
 
 namespace DataLib
 {
-    /*
+    /*      Класс WorkersData
      * 
+     * Представляет из себя словарь - двоичное дерево поиска 
+     *  с именем рабочего в качестве ключа
+     *  и с объектом класса Worker(информация о рабочем) в качестве элемента.
+     *  
+     * Содержит методы добавления и обработки данных.
+     * 
+     * Наследование:
+     *  Object -> SortedDictionary<string,Worker> -> WorkersData
      */
     public class WorkersData : SortedDictionary<string,Worker>
     {
+        //  Возвращает количество необходимых квартир(Кол-во нуждающихся в жилплощади)
         public int IsNeedAmount()
         {
             int amount = 0;
@@ -19,6 +28,8 @@ namespace DataLib
 
             return amount;
         }
+
+        //  Возвращает приоритетного(самого старшего) рабочего нуждающегося в жилплощади
         public Worker FindPriority()
         {
             Worker Person = new Worker(0, "", 2000, false);
@@ -36,6 +47,8 @@ namespace DataLib
             return Person;
         }
 
+        //  Метод добавления элемента.
+        //Переопределяется от метода Add() из класса SortedDictionary<string,Worker>.
         public void Add(Worker p) => Add(p.Name, p);
     }
 }
