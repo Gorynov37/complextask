@@ -51,6 +51,7 @@
             this.SaveAsButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.ClearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericYear)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_m)).BeginInit();
@@ -117,9 +118,9 @@
             // 
             this.DataProcessingButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.DataProcessingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DataProcessingButton.Location = new System.Drawing.Point(15, 479);
+            this.DataProcessingButton.Location = new System.Drawing.Point(151, 479);
             this.DataProcessingButton.Name = "DataProcessingButton";
-            this.DataProcessingButton.Size = new System.Drawing.Size(444, 76);
+            this.DataProcessingButton.Size = new System.Drawing.Size(308, 76);
             this.DataProcessingButton.TabIndex = 9;
             this.DataProcessingButton.Text = "ОБРАБОТАТЬ ДАННЫЕ";
             this.DataProcessingButton.UseVisualStyleBackColor = true;
@@ -297,11 +298,22 @@
             this.saveFileDialog1.FileName = "List";
             this.saveFileDialog1.Filter = "(*.txt)|*.txt|Все файлы (*.*)|*.*\"";
             // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(15, 479);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(130, 76);
+            this.ClearButton.TabIndex = 25;
+            this.ClearButton.Text = "Очистить";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // CompLabForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 567);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.SaveAsButton);
             this.Controls.Add(this.OpenFile_Button);
             this.Controls.Add(this.groupBox1);
@@ -353,6 +365,7 @@
         private System.Windows.Forms.NumericUpDown numeric_n;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button ClearButton;
     }
 }
 

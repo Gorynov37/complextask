@@ -46,6 +46,7 @@ namespace DataLib
 			Year = rnd.Next(1940, 2003);
 			IsNeed = Convert.ToBoolean(rnd.Next(0, 2));
 		}
+
 		//	Стандартный конструктор принимающий все 4 параметра
 		public Worker(int num, string name, int year, bool is_need)
 		{
@@ -54,6 +55,7 @@ namespace DataLib
 			Year = year;
 			IsNeed = is_need;
 		}
+
 		//	Копирует все параметры из worker в this
 		public void Copy(Worker worker)
         {

@@ -144,5 +144,14 @@ namespace WindowsFormsApp
             OutForm outForm = new OutForm(data);
             outForm.Show();
         }
+
+        //  Нажатие на кнопку "Очистить"
+        //Удаляет все ранее введённые данные
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            GeneratedListBox1.Items.Clear();
+            data.Clear();
+            inited = false;
+        }
     }
 }
