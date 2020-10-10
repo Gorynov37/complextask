@@ -38,12 +38,12 @@ namespace DataLib
         public void AddPerson(int num, Random rnd, in string[] surnames)
         {
             Worker Person = new Worker(num, rnd, in surnames);
-            
-            try
+
+            if (this.ContainsKey(num))
             {
                 this[num].Add(Person);
             }
-            catch (KeyNotFoundException)
+            else
             {
                 WorkersData workers = new WorkersData { Person };
                 Add(num, workers);
@@ -57,7 +57,7 @@ namespace DataLib
             Random rnd = new Random();
             StreamReader sw = new StreamReader(@"SurnameBase.txt");
             string[] surnames = new string[318472];
-            for (int i = 0; i < 318472; i++)
+            for (int i = 0; i < 318473; i++)
             {
                 surnames[i] = sw.ReadLine();
             }

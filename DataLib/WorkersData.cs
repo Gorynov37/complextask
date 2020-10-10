@@ -32,7 +32,7 @@ namespace DataLib
         //  Возвращает приоритетного(самого старшего) рабочего нуждающегося в жилплощади
         public Worker FindPriority()
         {
-            Worker Person = new Worker(0, "", 2000, false);
+            Worker Person = new Worker(0, "", 2002, false);
             int min_year = 2004;
             
             foreach(KeyValuePair<string, Worker> p in this)
